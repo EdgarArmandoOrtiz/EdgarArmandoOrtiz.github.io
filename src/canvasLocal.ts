@@ -105,6 +105,7 @@ export class CanvasLocal {
       this.graphics.fillRect(this.iX(i), this.iY(6 * h[ind] / maxEsc-0.1), this.iX(2) - this.iX(1), this.iY(0.2) - this.iY(6 * h[ind] / maxEsc ));
       this.drawRmboide(this.iX(i + 0.3), this.iY(6 * h[ind] / maxEsc + 0.2), this.iX(i + 1.3), this.iY(6 * h[ind] / maxEsc + 0.2),
                       this.iX(i + 1), this.iY(6 * h[ind] / maxEsc-0.1), this.iX(i), this.iY(6 * h[ind] / maxEsc-0.1), colors[ind]);
+                      
       this.drawRmboide(this.iX(i + 1), this.iY(6 * h[ind] / maxEsc-0.1), this.iX(i + 1.3), this.iY(6 * h[ind] / maxEsc + 0.2),
                       this.iX(i+1.3), this.iY(0.4), this.iX(i+1), this.iY(0.1), colors[ind]) ;
       ind++;
