@@ -1,4 +1,5 @@
 export class CanvasLocal {
+    //jdjdjdjdjdjdjdjjdjd//
     constructor(g, canvas) {
         this.graphics = g;
         this.rWidth = 12;
@@ -18,7 +19,7 @@ export class CanvasLocal {
         this.graphics.closePath();
         this.graphics.stroke();
     }
-    drawRmboide(x1, y1, x2, y2, x3, y3, x4, y4, color) {
+    drawRomboide(x1, y1, x2, y2, x3, y3, x4, y4, color) {
         // Color de relleno
         this.graphics.fillStyle = color;
         // Comenzamos la ruta de dibujo, o path
@@ -38,9 +39,7 @@ export class CanvasLocal {
         // Lo rellenamos
         this.graphics.fill();
     }
-    fx(x) {
-        return Math.sin(x * 2.5);
-    }
+    //
     maxH(h) {
         let max = h[0];
         for (let i = 1; i < h.length; i++) {
@@ -58,14 +57,39 @@ export class CanvasLocal {
         res = Math.ceil(max / pot) * pot;
         return res;
     }
+    rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+    hexToRgb(hex) {
+        let bigint = parseInt(hex.slice(1), 16);
+        let r = (bigint >> 16) & 255;
+        let g = (bigint >> 8) & 255;
+        let b = bigint & 255;
+        return ("rgb(" + r + "," + g + "," + b + ")");
+    }
+    drawHexface(x1, y1, width, height, r, g, b) {
+        let unidad = width;
+        this.drawRomboide(x1, y1 - height, x1 + width * 0.5, y1 - height - unidad * 0.2, x1 + width * 0.5, y1 - unidad * 0.2, x1, y1, "rgb(" + r + "," + g + "," + b + ")");
+        this.drawRomboide(x1, y1 - height, x1 - width * 0.5, y1 - height - unidad * 0.2, x1 - width * 0.5, y1 - unidad * 0.2, x1, y1, "rgb(" + (r - 20) + "," + (g + 20) + "," + b + ")");
+        this.drawRomboide(x1 + width * 0.5, y1 - height - unidad * 0.2, x1 + width * 0.75, y1 - height - unidad * 0.5, x1 + width * 0.75, y1 - unidad * 0.5, x1 + width * 0.5, y1 - unidad * 0.2, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+        this.drawRomboide(x1 - width * 0.5, y1 - height - unidad * 0.2, x1 - width * 0.75, y1 - height - unidad * 0.5, x1 - width * 0.75, y1 - unidad * 0.5, x1 - width * 0.5, y1 - unidad * 0.2, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+    }
+    drawHexface2(x1, y1, width, height, r, g, b) {
+        let unidad = width;
+        this.drawRomboide(x1, y1 + height, x1 + width * 0.5, y1 + height - unidad * -0.2, x1 + width * 0.5, y1 - unidad * 0.2, x1, y1, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+        this.drawRomboide(x1, y1 + height, x1 - width * 0.5, y1 + height - unidad * -0.2, x1 - width * 0.5, y1 - unidad * 0.2, x1, y1, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+        this.drawRomboide(x1 + width * 0.5, y1 + height - unidad * -0.2, x1 + width * 0.75, y1 + height - unidad * -0.5, x1 + width * 0.75, y1 - unidad * 0.5, x1 + width * 0.5, y1 - unidad * 0.2, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+        this.drawRomboide(x1 - width * 0.5, y1 + height - unidad * -0.2, x1 - width * 0.75, y1 + height - unidad * -0.5, x1 - width * 0.75, y1 - unidad * 0.5, x1 - width * 0.5, y1 - unidad * 0.2, "rgb(" + (r - 50) + "," + (g + 40) + "," + b + ")");
+    }
     paint() {
-        //let h: number[] = [420, 100, 160, 20];
-        //let h: number[] = [1150, 1780, 860, 1260];
-        let h = [27, 10, 16, 2];
+        let h = [120, 40, 50, 30];
+        //let h: number[] = [19, 10, 16, 2];
         let maxEsc;
         let colors = ['magenta', 'red', 'green', 'yellow'];
+        // let colorRelleno: number[]=
         maxEsc = this.maxH(h);
         this.graphics.strokeStyle = 'black';
+        this.graphics.fillStyle = colors[0];
         this.drawLine(this.iX(0), this.iY(0), this.iX(8), this.iY(0));
         this.drawLine(this.iX(0), this.iY(0), this.iX(0), this.iY(6));
         //las 6 unidades se dividen entre 4 periodos de lineas cada una 
@@ -79,14 +103,13 @@ export class CanvasLocal {
         }
         this.graphics.strokeStyle = 'black';
         let ind = 0;
-        for (let i = 0.5; i <= 8; i += 2) {
-            //this.graphics.strokeStyle = colors[ind];
-            this.graphics.fillStyle = colors[ind];
-            //console.log(this.rHeight*h[ind]/maxEsc)
-            this.drawLine(this.iX(i), this.iY(6 * h[ind] / maxEsc - 0.1), this.iX(i), this.iY(0));
-            this.graphics.fillRect(this.iX(i), this.iY(6 * h[ind] / maxEsc - 0.1), this.iX(2) - this.iX(1), this.iY(0.2) - this.iY(6 * h[ind] / maxEsc));
-            this.drawRmboide(this.iX(i + 0.3), this.iY(6 * h[ind] / maxEsc + 0.2), this.iX(i + 1.3), this.iY(6 * h[ind] / maxEsc + 0.2), this.iX(i + 1), this.iY(6 * h[ind] / maxEsc - 0.1), this.iX(i), this.iY(6 * h[ind] / maxEsc - 0.1), colors[ind]);
-            this.drawRmboide(this.iX(i + 1), this.iY(6 * h[ind] / maxEsc - 0.1), this.iX(i + 1.3), this.iY(6 * h[ind] / maxEsc + 0.2), this.iX(i + 1.3), this.iY(0.4), this.iX(i + 1), this.iY(0.1), colors[ind]);
+        let h1 = [1.8, 5.1, 4, 7];
+        let r = [229, 255, 57, 255];
+        let g = [9, 0, 255, 255];
+        let b = [127, 0, 20, 0];
+        for (let i = 1; i <= 8; i += 2) {
+            this.drawHexface(this.iX(i), this.iY(4 * h[ind] / maxEsc), this.iX(1) - this.iX(0), this.iY(4 * h[ind] / maxEsc) - this.iY(0), r[ind], g[ind], b[ind]);
+            this.drawHexface2(this.iX(i), this.iY(4 * h[ind] / maxEsc), this.iX(1) - this.iX(0), this.iY(h1[ind] * h[ind] / maxEsc) - this.iY(0), r[ind], g[ind], b[ind]);
             ind++;
         }
         ind = 0;
