@@ -65,15 +65,27 @@ function decrDistFunc() {
 }
 function Abrir() {
     var af = -10;
-    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 180);
+    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 60);
     for (var i = 73; i <= 80; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
+    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 60);
+    for (var i = 89; i <= 96; i++) {
+        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();
     var af2 = 10;
-    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 180);
+    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 60);
     for (var i = 81; i <= 88; i++) {
+        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();
+    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 60);
+    for (var i = 97; i <= 104; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
@@ -81,15 +93,27 @@ function Abrir() {
 }
 function Cerrar() {
     var af = +10;
-    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 180);
+    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 60);
     for (var i = 73; i <= 80; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
+    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 60);
+    for (var i = 89; i <= 96; i++) {
+        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();
     var af2 = -10;
-    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 180);
+    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 60);
     for (var i = 81; i <= 88; i++) {
+        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();
+    Rota3D.initRotate(obj.w[141], obj.w[142], af2 * Math.PI / 60);
+    for (var i = 97; i <= 104; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);

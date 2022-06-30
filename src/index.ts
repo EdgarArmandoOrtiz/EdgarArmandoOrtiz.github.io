@@ -80,19 +80,36 @@ function decrDistFunc() {
 function Abrir() {
   let af = -10;
  	
-	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/180);	
+	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
 
   for (let i = 73; i <= 80; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+  
+	cv.setObj(obj);
+  cv.paint();	
+
+  Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
+
+  for (let i = 89; i <= 96; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+  
+	cv.setObj(obj);
+  cv.paint();
+  let af2 = 10;
+ 	
+	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
+	
+  for (let i = 81; i <= 88; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
 	cv.setObj(obj);
   cv.paint();	
 
-  let af2 = 10;
- 	
-	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/180);	
+  Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
 	
-  for (let i = 81; i <= 88; i++){
+  for (let i = 97; i <= 104; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
 	cv.setObj(obj);
@@ -101,23 +118,40 @@ function Abrir() {
 function Cerrar() {
   let af = +10;
  	
-	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/180);	
+	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
 
   for (let i = 73; i <= 80; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
+  
 	cv.setObj(obj);
   cv.paint();	
 
+  Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
+
+  for (let i = 89; i <= 96; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+  
+	cv.setObj(obj);
+  cv.paint();
   let af2 = -10;
  	
-	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/180);	
+	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
 	
   for (let i = 81; i <= 88; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
 	cv.setObj(obj);
-  cv.paint();
+  cv.paint();	
+
+  Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
+	
+  for (let i = 97; i <= 104; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();	
   
 }
 
